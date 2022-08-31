@@ -28,8 +28,10 @@ window.fetch(new Request(`${folder}/${file}`)).then(response => {
             animationsElement.innerHTML += `<button onclick="
 if (location.href.match(/animation_index=\\d+/)) {
     location.href = location.href.replace(/animation_index=\\d+/, 'animation_index=${index}')
-} else {
+} else if (location.href.match(/\\?/)) {
     location.href = '${location.href}&animation_index=${index}'
+} else {
+    location.href = '${location.href}?animation_index=${index}'
 }
 ">${it}</button>`
         })
